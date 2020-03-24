@@ -27,7 +27,7 @@
         <b-navbar toggleable="sm" type="dark" variant="primary">
             <b-navbar-toggle target="nav-text-collapse"></b-navbar-toggle>
 
-            <b-navbar-brand href="{{ url('/') }}"> 
+            <b-navbar-brand href="{{ url('chat') }}"> 
                 
                 {{ config('app.name') }}
             </b-navbar-brand>

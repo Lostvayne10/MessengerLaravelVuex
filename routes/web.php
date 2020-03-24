@@ -17,7 +17,8 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/chat', 'HomeController@index')->name('chat');
+Route::get('/chat/{conversationId}', 'HomeController@index')->name('chat');
 
 Route::get('/profile', 'ProfileController@edit')->name('profile');
 Route::post('/profile', 'ProfileController@update');

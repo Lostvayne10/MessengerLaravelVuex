@@ -11,13 +11,14 @@ require('./bootstrap');
 import Vue from 'vue'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import store from './store.js'
-
+import VueRouter from 'vue-router'
+import MessengerComponent from './components/MessengerComponent.vue'
 
 // Install BootstrapVue
 Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
-Vue.use(store);
 
+Vue.use(VueRouter);
 
 Vue.component('contact-component', 
 require('./components/ContactComponent.vue').default);
@@ -37,9 +38,9 @@ require('./components/ActiveConversationComponent.vue').default);
 Vue.component('message-conversation-component', 
 require('./components/MessageConversationComponent.vue').default);
 
-Vue.component('messenger-component', 
+/*Vue.component('messenger-component', 
 require('./components/MessengerComponent.vue').default);
-
+*/
 Vue.component('contact-form-component', 
 require('./components/ContactFormComponent.vue').default);
 
@@ -51,12 +52,21 @@ require('./components/ContactFormComponent.vue').default);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+const routes = [
+    {path: '/chat', component: MessengerComponent },
+    {path: '/chat/:conversationId', component: MessengerComponent }
+];
 
+const router = new VueRouter({
+    routes,
+    mode: 'history'
+});
 
 
 const app = new Vue({
     el: '#app',
     store,
+    router,
     methods: {
         logout(){
             document.getElementById('logout-form').submit();
